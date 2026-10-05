@@ -1,0 +1,13 @@
+step,rows_before,rows_after,note
+merge base+adv+bio,5492,5492,10 seasons stacked
+drop exact duplicates,5492,5492,traded players arrive as one combined row (735 rows)
+fix draft fields,5492,5492,1400 rows undrafted -> pick 61
+filter GP>=10 & MIN>=10,5492,4189,removed 1303 small-sample rows
+flag IQR outliers (kept),4189,4189,"145 rows flagged on ['PTS', 'MIN', 'USG_PCT']"
+engineer features,4189,4189,"AGE_SQ, GP_SHARE, rates, PTS_DELTA"
+build t+1 target,4189,4189,2995 rows with target; 1194 without (retired/injured/filtered/2025-26)
+one-hot team + draft round,4189,4189,31 dummy columns
+split: train,4189,1982,66% of labelled
+split: val,4189,673,22% of labelled
+split: test,4189,340,11% of labelled
+split: live,4189,441,prediction rows

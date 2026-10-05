@@ -1,0 +1,4 @@
+# Local development only (not installed in the Docker image)
+-r requirements.txt
+pytest==9.1.1
+ruff==0.16.10

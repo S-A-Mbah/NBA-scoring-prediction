@@ -1,0 +1,14 @@
+services:
+  dashboard:
+    build: .
+    image: nba_dashboard
+    container_name: nba_dashboard
+    ports:
+      - "8501:8501"
+    # Development convenience: mount the code and data so edits on the host show up in the
+    # running app without a rebuild (Streamlit offers "Rerun" when a file changes).
+    # The image itself is self-contained; plain `docker run` does not need these.
+    volumes:
+      - ./app:/app/app
+      - ./src:/app/src
+      - ./data:/app/data
